@@ -14,4 +14,4 @@
 and `:PlugUpdate` (updates/installs all the Plug-referenced plugins) commands. Plugins will be loaded on the next run. \
 It might be a good idea to run those commands once in a while to keep your tools up-to-date
 
-Original [config](https://gitlab.com/kirushik/sick-of-vim)
+Based on [config](https://gitlab.com/kirushik/sick-of-vim)
