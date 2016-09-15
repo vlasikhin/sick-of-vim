@@ -26,7 +26,7 @@ call plug#begin()
 	Plug 'elixir-lang/vim-elixir'
 	Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 
-	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb' ] }
+	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
 
 	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
