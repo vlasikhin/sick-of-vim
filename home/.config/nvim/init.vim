@@ -1,38 +1,35 @@
 call plug#begin()
+	"	Theme
 	Plug 'junegunn/seoul256.vim'
+
+	" 	?
 	Plug 'tpope/vim-sensible'
+	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
+	Plug 'ciaranm/detectindent'
 
-	Plug 'benekastah/neomake'
 
-
+	" 	Autocomplete
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
 
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
 
-	Plug 'mhinz/vim-grepper'
-
+	" 	Syntax
+	Plug 'benekastah/neomake'
 	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
+	Plug 'slim-template/vim-slim'
 
+	"	Search
+	Plug 'mhinz/vim-grepper'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
-	Plug 'KabbAmine/zeavim.vim'
-
+	"	Rails
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
-	Plug 'rust-lang/rust.vim', { 'for': 'rust' } | Plug 'racer-rust/vim-racer'
-
-	Plug 'elixir-lang/vim-elixir'
-	Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
-
-	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
-
-	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-
-	Plug 'airblade/vim-rooter'
-
+	"	Navigation
 	Plug 'scrooloose/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -40,12 +37,16 @@ call plug#begin()
 	Plug 'tpope/vim-sleuth'
 	Plug 'scrooloose/nerdcommenter'
 
-	Plug 'ciaranm/detectindent'
+	Plug 'airblade/vim-rooter'
 
+	"	Select
 	Plug 'terryma/vim-expand-region'
 	Plug 'justinmk/vim-sneak'
 
+	" 	Status
 	Plug 'vim-airline/vim-airline'
+
+	"	Git
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
 
