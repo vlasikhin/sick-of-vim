@@ -8,6 +8,7 @@ call plug#begin()
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
+
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
 
 	Plug 'mhinz/vim-grepper'
@@ -30,7 +31,6 @@ call plug#begin()
 
 	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-	Plug 'bling/vim-airline' | Plug 'airblade/vim-gitgutter'
 	Plug 'airblade/vim-rooter'
 
 	Plug 'scrooloose/nerdtree'
@@ -44,12 +44,15 @@ call plug#begin()
 
 	Plug 'terryma/vim-expand-region'
 	Plug 'justinmk/vim-sneak'
+
+	Plug 'vim-airline/vim-airline'
+	Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Because of fish-shell
 set shell=sh
 
-let g:seoul256_background = 233
+let g:seoul256_background = 238
 colo seoul256
 
 set relativenumber
