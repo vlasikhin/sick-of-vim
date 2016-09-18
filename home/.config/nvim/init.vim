@@ -3,6 +3,8 @@ call plug#begin()
 	Plug 'junegunn/seoul256.vim'
 
 	" 	?
+	Plug 'ervandew/supertab'
+	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-sensible'
 	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
@@ -28,7 +30,10 @@ call plug#begin()
 
 	"	Rails
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
-
+	
+	"	RSpec and other test
+	Plug 'skalnik/vim-vroom'
+	
 	"	Navigation
 	Plug 'scrooloose/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
@@ -49,6 +54,7 @@ call plug#begin()
 	"	Git
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
+set number
 
 " Because of fish-shell
 set shell=sh
@@ -56,7 +62,7 @@ set shell=sh
 let g:seoul256_background = 238
 colo seoul256
 
-set relativenumber
+"set relativenumber
 set hidden
 
 set updatetime=250
