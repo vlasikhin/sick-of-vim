@@ -1,8 +1,6 @@
 call plug#begin()
-	"	Theme
 	Plug 'junegunn/seoul256.vim'
 
-	" 	?
 	Plug 'ervandew/supertab'
 	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-sensible'
@@ -10,31 +8,27 @@ call plug#begin()
 	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
 	Plug 'ciaranm/detectindent'
 
-
-	" 	Autocomplete
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
-
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
 
-	" 	Syntax
 	Plug 'benekastah/neomake'
 	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
 	Plug 'slim-template/vim-slim'
 
-	"	Search
 	Plug 'mhinz/vim-grepper'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
-	"	Rails
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
+	Plug 'vim-ruby/vim-ruby'	
+	Plug 'thoughtbot/vim-rspec'	
+ 	Plug 'jgdavey/vim-blockle'
+	Plug 'Raimondi/delimitMate'
 	
-	"	RSpec and other test
 	Plug 'skalnik/vim-vroom'
 	
-	"	Navigation
 	Plug 'scrooloose/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -44,14 +38,12 @@ call plug#begin()
 
 	Plug 'airblade/vim-rooter'
 
-	"	Select
 	Plug 'terryma/vim-expand-region'
 	Plug 'justinmk/vim-sneak'
 
-	" 	Status
 	Plug 'vim-airline/vim-airline'
-
-	"	Git
+	Plug 'nathanaelkane/vim-indent-guides'
+	
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
 set number
@@ -61,6 +53,11 @@ set shell=sh
 
 let g:seoul256_background = 238
 colo seoul256
+
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_color_change_percent = 5
 
 "set relativenumber
 set hidden
@@ -82,6 +79,12 @@ let g:zv_file_types = {
 			\}
 
 "Keybindings
+
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 let mapleader = "\<Space>"
 
 nnoremap <Tab> :bNext<CR>
@@ -102,6 +105,7 @@ let g:gitgutter_realtime = 1
 
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_autofind = 1
+let g:NERDTreeShowHidden = 1
 
 "Grepping utilities
 nnoremap <leader>git :Grepper -tool git -noswitch<cr>
