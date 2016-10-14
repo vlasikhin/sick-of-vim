@@ -46,6 +46,7 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline'
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'tpope/vim-fugitive'
+	Plug 'vim-airline/vim-airline-themes'
 
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
@@ -103,6 +104,7 @@ nnoremap <Leader><C-h> :FzfBCommits<CR>
 map <C-n> <plug>NERDTreeFocusToggle<CR>
 
 " air-line
+let g:airline_theme='murmur'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
@@ -138,7 +140,7 @@ let g:gitgutter_realtime = 1
 
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_autofind = 1
-let g:NERDTreeShowHidden = 1
+" let g:NERDTreeShowHidden = 1
 
 "Grepping utilities
 nnoremap <leader>git :Grepper -tool git -noswitch<cr>
