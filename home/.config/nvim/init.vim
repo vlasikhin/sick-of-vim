@@ -1,6 +1,9 @@
 call plug#begin()
-	Plug 'junegunn/seoul256.vim'
-
+	"Plug 'junegunn/seoul256.vim'
+	"Plug 'YorickPeterse/happy_hacking.vim'
+	Plug 'kristijanhusak/vim-hybrid-material'
+	
+	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ervandew/supertab'
 	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-sensible'
@@ -51,8 +54,12 @@ set number
 " Because of fish-shell
 set shell=sh
 
-let g:seoul256_background = 238
-colo seoul256
+set background=dark
+colorscheme hybrid_reverse 
+
+"color happy_hacking
+"let g:seoul256_background = 238
+"colo seoul256
 
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
