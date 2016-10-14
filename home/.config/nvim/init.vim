@@ -1,8 +1,6 @@
 call plug#begin()
-	"Plug 'junegunn/seoul256.vim'
-	"Plug 'YorickPeterse/happy_hacking.vim'
-	Plug 'kristijanhusak/vim-hybrid-material'
-	
+	Plug 'junegunn/seoul256.vim'
+
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ervandew/supertab'
 	Plug 'tpope/vim-endwise'
@@ -19,14 +17,15 @@ call plug#begin()
 	Plug 'benekastah/neomake'
 	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
 	Plug 'slim-template/vim-slim'
+	Plug 'kchmck/vim-coffee-script'
 
 	Plug 'mhinz/vim-grepper'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
-	Plug 'vim-ruby/vim-ruby'	
-	Plug 'thoughtbot/vim-rspec'	
+	Plug 'vim-ruby/vim-ruby'
+	Plug 'thoughtbot/vim-rspec'
  	Plug 'jgdavey/vim-blockle'
 	Plug 'Raimondi/delimitMate'
 	
@@ -46,7 +45,8 @@ call plug#begin()
 
 	Plug 'vim-airline/vim-airline'
 	Plug 'nathanaelkane/vim-indent-guides'
-	
+	Plug 'tpope/vim-fugitive'
+
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
 set number
@@ -54,12 +54,9 @@ set number
 " Because of fish-shell
 set shell=sh
 
-set background=dark
-colorscheme hybrid_reverse 
-
-"color happy_hacking
-"let g:seoul256_background = 238
-"colo seoul256
+" settings for Seoul Theme
+let g:seoul256_background = 234
+colo seoul256
 
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
@@ -105,8 +102,37 @@ nnoremap <Leader><C-h> :FzfBCommits<CR>
 
 map <C-n> <plug>NERDTreeFocusToggle<CR>
 
+" air-line
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts = 1
 
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 1
 
