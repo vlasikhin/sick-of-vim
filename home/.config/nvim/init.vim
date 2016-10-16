@@ -1,5 +1,9 @@
 call plug#begin()
-	Plug 'junegunn/seoul256.vim'
+	Plug 'NLKNguyen/papercolor-theme'
+	Plug 'MarcWeber/vim-addon-mw-utils'
+	Plug 'tomtom/tlib_vim'
+	Plug 'honza/vim-snippets'
+	Plug 'garbas/vim-snipmate'
 
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ervandew/supertab'
@@ -8,7 +12,8 @@ call plug#begin()
 	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
 	Plug 'ciaranm/detectindent'
-
+	Plug 'godlygeek/tabular'
+	Plug 'plasticboy/vim-markdown'
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
@@ -19,7 +24,6 @@ call plug#begin()
 	Plug 'slim-template/vim-slim'
 	Plug 'kchmck/vim-coffee-script'
 
-	Plug 'mhinz/vim-grepper'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
@@ -28,9 +32,7 @@ call plug#begin()
 	Plug 'thoughtbot/vim-rspec'
  	Plug 'jgdavey/vim-blockle'
 	Plug 'Raimondi/delimitMate'
-	
 	Plug 'skalnik/vim-vroom'
-	
 	Plug 'scrooloose/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -44,7 +46,7 @@ call plug#begin()
 	Plug 'justinmk/vim-sneak'
 
 	Plug 'vim-airline/vim-airline'
-	Plug 'nathanaelkane/vim-indent-guides'
+	Plug 'Yggdroot/indentLine'
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline-themes'
 
@@ -52,22 +54,29 @@ call plug#begin()
 call plug#end()
 set number
 
-" Because of fish-shell
-set shell=sh
 
-" settings for Seoul Theme
-let g:seoul256_background = 234
-colo seoul256
+" Theme
+set background=dark
+colorscheme PaperColor
 
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_color_change_percent = 5
+let g:enable_bold_font = 1
 
+let g:indentLine_color_term = 239
+set nu
 "set relativenumber
 set hidden
 
 set updatetime=250
+
+syntax on                 " Enable syntax highlighting
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+augroup myfiletypes
+	" Clear old autocmds in group
+	autocmd!
+	" autoindent with two spaces, always expand tabs
+	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
+augroup END
 
 autocmd! BufWritePost * Neomake
 
@@ -84,27 +93,41 @@ let g:zv_file_types = {
 			\}
 
 "Keybindings
-
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" My leader key
 let mapleader = "\<Space>"
 
-nnoremap <Tab> :bNext<CR>
-nnoremap <Leader><C-w> :bp<bar>sp<bar>bn<bar>bd<CR>
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
+" Remove highlights with leader + enter
+nmap <Leader><CR> :nohlsearch<cr>
+
+" Buffer switching
+nnoremap <Tab> :bNext<CR>
+map <leader>p :bp<CR> " \p previous buffer
+map <leader>n :bn<CR> " \n next buffer
+map <leader>d :bd<CR> " \d delete buffer
+
+"nnoremap <Leader><C-w> :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <C-p> :FzfFiles<CR>
 nnoremap <C-g> :FzfLines<CR>
 nnoremap <Leader><C-p> :FzfGitFiles<CR>
 nnoremap <Leader><C-h> :FzfBCommits<CR>
 
-map <C-n> <plug>NERDTreeFocusToggle<CR>
+map <leader>w :NERDTreeFocusToggle<CR>
+map <leader>q :NERDTreeToggle<CR>
 
 " air-line
-let g:airline_theme='murmur'
+let g:airline_theme = "murmur"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
@@ -140,12 +163,33 @@ let g:gitgutter_realtime = 1
 
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_autofind = 1
-" let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowHidden = 0
 
-"Grepping utilities
-nnoremap <leader>git :Grepper -tool git -noswitch<cr>
-nnoremap <leader>ag  :Grepper -tool ag  -grepprg ag --vimgrep -G '^.+\.txt'<cr>
-nnoremap <leader>*   :Grepper -tool ack -cword -noprompt<cr>
+"================= Experimental ====================="
 
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+syntax on                 " Enable syntax highlighting
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+augroup myfiletypes
+	" Clear old autocmds in group
+	autocmd!
+	" autoindent with two spaces, always expand tabs
+	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
+augroup END
+
+" Syntax highlighting and theme
+syntax enable
+
+" Show trailing whitespace and spaces before a tab:
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
+
+
+" highlight the current line
+set cursorline
+" Highlight active column
+set cuc cul
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
