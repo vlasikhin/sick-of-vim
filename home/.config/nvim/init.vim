@@ -6,6 +6,11 @@ call plug#begin()
 	Plug 'honza/vim-snippets'
 	Plug 'garbas/vim-snipmate'
 
+
+	Plug 'ap/vim-css-color'
+	Plug 'ngmy/vim-rubocop'
+	Plug 'vim-syntastic/syntastic'
+
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ervandew/supertab'
 	Plug 'tpope/vim-endwise'
@@ -53,21 +58,32 @@ call plug#begin()
 
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
+
 set number
+set updatecount=50
+syntax on                 " Enable syntax highlighting
+set updatetime=250
+set hidden
+set nu
 
 " Theme
 syntax enable
 set termguicolors
 colorscheme neodark
 
-set nu
-"set relativenumber
-set hidden
+let ruby_operators = 1
+let ruby_space_errors = 1
+let g:rubycomplete_rails = 1
 
-set updatetime=250
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-syntax on                 " Enable syntax highlighting
-filetype plugin indent on " Enable filetype-specific indenting and plugins
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
 
 augroup myfiletypes
 	" Clear old autocmds in group
@@ -165,7 +181,6 @@ let g:NERDTreeShowHidden = 0
 
 "================= Experimental ====================="
 
-syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 augroup myfiletypes
@@ -174,8 +189,6 @@ augroup myfiletypes
 	" autoindent with two spaces, always expand tabs
 	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
 augroup END
-
-
 
 " Show trailing whitespace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
