@@ -1,5 +1,6 @@
 call plug#begin()
-	Plug 'NLKNguyen/papercolor-theme'
+	Plug 'KeitaNakamura/neodark.vim'
+	Plug 'itchyny/vim-cursorword'
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'honza/vim-snippets'
@@ -54,14 +55,11 @@ call plug#begin()
 call plug#end()
 set number
 
-
 " Theme
-set background=dark
-colorscheme PaperColor
+syntax enable
+set termguicolors
+colorscheme neodark
 
-let g:enable_bold_font = 1
-
-let g:indentLine_color_term = 239
 set nu
 "set relativenumber
 set hidden
@@ -127,7 +125,7 @@ map <leader>w :NERDTreeFocusToggle<CR>
 map <leader>q :NERDTreeToggle<CR>
 
 " air-line
-let g:airline_theme = "murmur"
+let g:airline_theme='neodark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
@@ -177,8 +175,7 @@ augroup myfiletypes
 	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
 augroup END
 
-" Syntax highlighting and theme
-syntax enable
+
 
 " Show trailing whitespace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
@@ -188,7 +185,7 @@ syntax enable
 " highlight the current line
 set cursorline
 " Highlight active column
-set cuc cul
+"set cuc cul
 
 " Tab completion
 set wildmode=list:longest,list:full
