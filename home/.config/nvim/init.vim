@@ -6,7 +6,7 @@ call plug#begin()
 	Plug 'honza/vim-snippets'
 	Plug 'garbas/vim-snipmate'
 
-
+	Plug 'posva/vim-vue'
 	Plug 'ap/vim-css-color'
 	Plug 'ngmy/vim-rubocop'
 	Plug 'vim-syntastic/syntastic'
@@ -20,10 +20,11 @@ call plug#begin()
 	Plug 'ciaranm/detectindent'
 	Plug 'godlygeek/tabular'
 	Plug 'plasticboy/vim-markdown'
+
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
-	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
+	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
 
 	Plug 'benekastah/neomake'
 	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
@@ -70,6 +71,10 @@ set nu
 syntax enable
 set termguicolors
 colorscheme neodark
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 let ruby_operators = 1
 let ruby_space_errors = 1
