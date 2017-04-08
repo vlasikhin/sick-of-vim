@@ -5,7 +5,7 @@ call plug#begin()
 	Plug 'tomtom/tlib_vim'
 	Plug 'honza/vim-snippets'
 	Plug 'garbas/vim-snipmate'
-
+	Plug 'rizzatti/dash.vim'
 	Plug 'posva/vim-vue'
 	Plug 'ap/vim-css-color'
 	Plug 'ngmy/vim-rubocop'
