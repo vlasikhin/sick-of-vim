@@ -14,7 +14,6 @@ call plug#begin()
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'ervandew/supertab'
 	Plug 'tpope/vim-endwise'
-	Plug 'tpope/vim-sensible'
 	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
 	Plug 'ciaranm/detectindent'
