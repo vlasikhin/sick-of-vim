@@ -1,84 +1,103 @@
 call plug#begin()
+"Theme"
 	Plug 'KeitaNakamura/neodark.vim'
+
+"Underlines the word under the cursor"
 	Plug 'itchyny/vim-cursorword'
+
+"Snippets"
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'honza/vim-snippets'
 	Plug 'garbas/vim-snipmate'
-	Plug 'rizzatti/dash.vim'
-	Plug 'posva/vim-vue'
-	Plug 'ap/vim-css-color'
-	Plug 'ngmy/vim-rubocop'
+
+"Sintax"
 	Plug 'vim-syntastic/syntastic'
-
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'ervandew/supertab'
-	Plug 'tpope/vim-endwise'
-	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
-	Plug 'ciaranm/detectindent'
-	Plug 'godlygeek/tabular'
+	Plug 'posva/vim-vue', { 'for': 'vue' }
 	Plug 'plasticboy/vim-markdown'
+	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
+	Plug 'slim-template/vim-slim'
+	Plug 'kchmck/vim-coffee-script'
+	Plug 'vim-ruby/vim-ruby'
 
+"color keyword highlighter"
+	Plug 'ap/vim-css-color'
+
+"insert mode completions with Tab"
+	Plug 'ervandew/supertab'
+
+"add "end" in ruby"
+	Plug 'tpope/vim-endwise'
+
+"Interactive command execution in Vim"
+	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+"support for expanding abbreviations similar to emmet"
+	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
+
+"automatically detecting indent settings"
+	Plug 'ciaranm/detectindent'
+
+"Dark powered asynchronous completion framework for neovim"
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
 
+"Asynchronous linting and make framework for Neovim/Vim"
 	Plug 'benekastah/neomake'
-	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
-	Plug 'slim-template/vim-slim'
-	Plug 'kchmck/vim-coffee-script'
 
+"A command-line fuzzy finder"
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
+"Ruby on Rails power tools"
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
-	Plug 'vim-ruby/vim-ruby'
-	Plug 'thoughtbot/vim-rspec'
- 	Plug 'jgdavey/vim-blockle'
+
+"automatic closing of quotes, parenthesis, brackets, etc.,"
 	Plug 'Raimondi/delimitMate'
-	Plug 'skalnik/vim-vroom'
+
+"NerdTree"
 	Plug 'scrooloose/nerdtree'
+	Plug 'scrooloose/nerdcommenter'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
-
 	Plug 'tpope/vim-sleuth'
-	Plug 'scrooloose/nerdcommenter'
-
-	Plug 'airblade/vim-rooter'
 
 	Plug 'terryma/vim-expand-region'
 	Plug 'justinmk/vim-sneak'
 
 	Plug 'vim-airline/vim-airline'
 	Plug 'Yggdroot/indentLine'
-	Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline-themes'
 
+"shows a git diff in the gutter"
 	Plug 'airblade/vim-gitgutter'
+	Plug 'airblade/vim-rooter'
+
 call plug#end()
 
+syntax on
 set number
 set updatecount=50
-syntax on                 " Enable syntax highlighting
 set updatetime=250
 set hidden
 set nu
+" highlight the current line
+set cursorline
+" Highlight active column
+"set cuc cul
 
 " Theme
 syntax enable
 set termguicolors
 colorscheme neodark
 
-" Markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-
 let ruby_operators = 1
 let ruby_space_errors = 1
 let g:rubycomplete_rails = 1
 
+"Sintax"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -89,6 +108,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+
+"Deoplete"
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+
+"Neomake"
+autocmd! BufWritePost * Neomake
+
 augroup myfiletypes
 	" Clear old autocmds in group
 	autocmd!
@@ -96,25 +127,11 @@ augroup myfiletypes
 	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
 augroup END
 
-autocmd! BufWritePost * Neomake
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-
-"let g:monster#completion#rcodetools#backend = "async_rct_complete"
-
 let g:zv_file_types = {
 			\ 'ruby'                   : 'ruby,ruby_2,rails',
 			\ 'css'                    : 'css,bootstrap_3',
 			\ 'javascript'             : 'javascript,jquery,angularjs,jasmine',
 			\}
-
-"Keybindings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 " My leader key
 let mapleader = "\<Space>"
@@ -187,22 +204,9 @@ let g:NERDTreeShowHidden = 0
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
-augroup myfiletypes
-	" Clear old autocmds in group
-	autocmd!
-	" autoindent with two spaces, always expand tabs
-	autocmd FileType ruby,eruby,yaml,markdown set ai sw=2 sts=2 et
-augroup END
-
 " Show trailing whitespace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
-
-
-" highlight the current line
-set cursorline
-" Highlight active column
-"set cuc cul
 
 " Tab completion
 set wildmode=list:longest,list:full
