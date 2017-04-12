@@ -158,8 +158,11 @@ nnoremap <C-g> :FzfLines<CR>
 nnoremap <Leader><C-p> :FzfGitFiles<CR>
 nnoremap <Leader><C-h> :FzfBCommits<CR>
 
+" NERDTree
 map <leader>w :NERDTreeFocusToggle<CR>
 map <leader>q :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden=1
+let g:NERDTreeIgnore=['\.git$', '\.idea$', '\~$','\.DS_Store']
 
 " air-line
 let g:airline_theme='neodark'
