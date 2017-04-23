@@ -26,7 +26,7 @@ call plug#begin()
 "insert mode completions with Tab"
 	Plug 'ervandew/supertab'
 
-"add "end" in ruby"
+"add end in ruby"
 	Plug 'tpope/vim-endwise'
 
 "Interactive command execution in Vim"
