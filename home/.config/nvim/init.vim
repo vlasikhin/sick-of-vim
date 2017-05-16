@@ -1,7 +1,7 @@
 call plug#begin()
 "Theme"
-	Plug 'KeitaNakamura/neodark.vim'
-
+""	Plug 'KeitaNakamura/neodark.vim'
+	Plug 'junegunn/seoul256.vim'
 "Underlines the word under the cursor"
 	Plug 'itchyny/vim-cursorword'
 
@@ -89,9 +89,12 @@ set cursorline
 "set cuc cul
 
 " Theme
+let g:seoul256_background = 235
+colo seoul256
+
 syntax enable
 set termguicolors
-colorscheme neodark
+"colorscheme neodark
 
 let ruby_operators = 1
 let ruby_space_errors = 1
@@ -163,9 +166,12 @@ map <leader>w :NERDTreeFocusToggle<CR>
 map <leader>q :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\.git$', '\.idea$', '\~$','\.DS_Store']
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_autofind = 1
+
 
 " air-line
-let g:airline_theme='neodark'
+let g:airline_theme='zenburn'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
@@ -198,10 +204,6 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 1
-
-let g:nerdtree_tabs_open_on_console_startup = 1
-let g:nerdtree_tabs_autofind = 1
-let g:NERDTreeShowHidden = 0
 
 "================= Experimental ====================="
 
