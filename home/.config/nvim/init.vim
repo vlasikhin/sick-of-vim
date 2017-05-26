@@ -1,7 +1,7 @@
 call plug#begin()
 "Theme"
-""	Plug 'KeitaNakamura/neodark.vim'
-	Plug 'junegunn/seoul256.vim'
+	Plug 'KeitaNakamura/neodark.vim'
+""	Plug 'junegunn/seoul256.vim'
 "Underlines the word under the cursor"
 	Plug 'itchyny/vim-cursorword'
 
@@ -89,12 +89,12 @@ set cursorline
 "set cuc cul
 
 " Theme
-let g:seoul256_background = 235
-colo seoul256
+"let g:seoul256_background = 235
+"colo seoul256
 
 syntax enable
 set termguicolors
-"colorscheme neodark
+colorscheme neodark
 
 let ruby_operators = 1
 let ruby_space_errors = 1
