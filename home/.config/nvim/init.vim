@@ -43,7 +43,8 @@ call plug#begin()
 		UpdateRemotePlugins
 	endfunction
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
-
+" Rubocop
+	Plug 'ngmy/vim-rubocop'
 "Asynchronous linting and make framework for Neovim/Vim"
 	Plug 'benekastah/neomake'
 
@@ -96,6 +97,7 @@ syntax enable
 set termguicolors
 colorscheme neodark
 
+let g:vimrubocop_config = '~/Work/.rubocop.yml'
 let ruby_operators = 1
 let ruby_space_errors = 1
 let g:rubycomplete_rails = 1
@@ -171,7 +173,7 @@ let g:nerdtree_tabs_autofind = 1
 
 
 " air-line
-let g:airline_theme='zenburn'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
