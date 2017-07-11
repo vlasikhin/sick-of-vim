@@ -1,11 +1,14 @@
 call plug#begin()
 "Theme"
 	Plug 'KeitaNakamura/neodark.vim'
-""	Plug 'junegunn/seoul256.vim'
+	Plug 'junegunn/seoul256.vim'
+	Plug 'kristijanhusak/vim-hybrid-material'
 "Underlines the word under the cursor"
 	Plug 'itchyny/vim-cursorword'
+	Plug 'johngrib/vim-game-code-break'
+	Plug 'vim-scripts/vim-auto-save'
 
-"Snippets"
+	"Snippets"
 	Plug 'MarcWeber/vim-addon-mw-utils'
 	Plug 'tomtom/tlib_vim'
 	Plug 'honza/vim-snippets'
@@ -43,8 +46,6 @@ call plug#begin()
 		UpdateRemotePlugins
 	endfunction
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
-" Rubocop
-	Plug 'ngmy/vim-rubocop'
 "Asynchronous linting and make framework for Neovim/Vim"
 	Plug 'benekastah/neomake'
 
@@ -90,22 +91,23 @@ set cursorline
 "set cuc cul
 
 " Theme
-"let g:seoul256_background = 235
-"colo seoul256
+"  let g:seoul256_background = 233
+"  colo seoul256
+
+set background=dark
+colorscheme hybrid_material
 
 syntax enable
 set termguicolors
-colorscheme neodark
-
-let g:vimrubocop_config = '~/Work/.rubocop.yml'
-let ruby_operators = 1
-let ruby_space_errors = 1
-let g:rubycomplete_rails = 1
+"colorscheme neodark
 
 "Sintax"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+" Auto Save
+let g:auto_save = 1
 
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
@@ -173,7 +175,8 @@ let g:nerdtree_tabs_autofind = 1
 
 
 " air-line
-let g:airline_theme='bubblegum'
+let g:airline_theme = "hybrid"
+"let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
