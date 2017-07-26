@@ -1,65 +1,37 @@
 call plug#begin()
 "Theme"
 	Plug 'KeitaNakamura/neodark.vim'
-	Plug 'junegunn/seoul256.vim'
-	Plug 'kristijanhusak/vim-hybrid-material'
-"Underlines the word under the cursor"
-	Plug 'itchyny/vim-cursorword'
-	Plug 'johngrib/vim-game-code-break'
-	Plug 'vim-scripts/vim-auto-save'
+	Plug 'tpope/vim-sensible'
 
-	"Snippets"
-	Plug 'MarcWeber/vim-addon-mw-utils'
-	Plug 'tomtom/tlib_vim'
-	Plug 'honza/vim-snippets'
-	Plug 'garbas/vim-snipmate'
+	Plug 'benekastah/neomake'
 
-"Sintax"
-	Plug 'vim-syntastic/syntastic'
-	Plug 'posva/vim-vue', { 'for': 'vue' }
-	Plug 'plasticboy/vim-markdown'
-	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
-	Plug 'slim-template/vim-slim'
-	Plug 'kchmck/vim-coffee-script'
-	Plug 'vim-ruby/vim-ruby'
-
-"color keyword highlighter"
-	Plug 'ap/vim-css-color'
-
-"insert mode completions with Tab"
-	Plug 'ervandew/supertab'
-
-"add end in ruby"
-	Plug 'tpope/vim-endwise'
-
-"Interactive command execution in Vim"
-	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-
-"support for expanding abbreviations similar to emmet"
-	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb', 'slim', 'scss', 'css' ] }
-
-"automatically detecting indent settings"
-	Plug 'ciaranm/detectindent'
-
-"Dark powered asynchronous completion framework for neovim"
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
-"Asynchronous linting and make framework for Neovim/Vim"
-	Plug 'benekastah/neomake'
 
-"A command-line fuzzy finder"
+	Plug 'mhinz/vim-grepper'
+
+	Plug 'peterhoeg/vim-qml', { 'for': 'qml' }
+
+	Plug 'posva/vim-vue', { 'for': 'vue' }
+
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
-"Ruby on Rails power tools"
+	Plug 'KabbAmine/zeavim.vim'
+
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
-"automatic closing of quotes, parenthesis, brackets, etc.,"
-	Plug 'Raimondi/delimitMate'
+	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb' ] }
 
-"NerdTree"
+	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+	Plug 'bling/vim-airline' | Plug 'airblade/vim-gitgutter'
+	Plug 'airblade/vim-rooter'
+
+	Plug 'ciaranm/detectindent'
+
 	Plug 'scrooloose/nerdtree'
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'jistr/vim-nerdtree-tabs'
@@ -72,10 +44,6 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline'
 	Plug 'Yggdroot/indentLine'
 	Plug 'vim-airline/vim-airline-themes'
-
-"shows a git diff in the gutter"
-	Plug 'airblade/vim-gitgutter'
-	Plug 'airblade/vim-rooter'
 
 call plug#end()
 
@@ -91,33 +59,13 @@ set cursorline
 "set cuc cul
 
 " Theme
-"  let g:seoul256_background = 233
-"  colo seoul256
-
-set background=dark
-colorscheme hybrid_material
 
 syntax enable
 set termguicolors
-"colorscheme neodark
-
-"Sintax"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+colorscheme neodark
 
 " Auto Save
 let g:auto_save = 1
-
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-
-" Markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
 
 "Deoplete"
 let g:deoplete#enable_at_startup = 1
