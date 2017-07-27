@@ -26,6 +26,7 @@ call plug#begin()
 	Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
 	Plug 'mattn/emmet-vim', { 'for': [ 'html', 'haml', 'erb' ] }
+	Plug 'slim-template/vim-slim'
 
 	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
