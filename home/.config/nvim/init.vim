@@ -4,10 +4,12 @@ call plug#begin()
 	Plug 'tpope/vim-sensible'
 
 	Plug 'benekastah/neomake'
+	Plug 'vim-scripts/vim-auto-save'
 
 	function! DoRemote(arg)
 		UpdateRemotePlugins
 	endfunction
+
 	Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } | Plug 'osyo-manga/vim-monster', { 'for': 'ruby' }
 
 	Plug 'mhinz/vim-grepper'
@@ -57,14 +59,13 @@ set nu
 
 " highlight the current line
 set cursorline
+
 " Theme
 
 syntax enable
 set termguicolors
-
-"colorscheme neodark
 colorscheme one
-set background=dark " for the dark version
+set background=dark 
 
 "Deoplete"
 let g:deoplete#enable_at_startup = 1
@@ -89,6 +90,9 @@ let g:zv_file_types = {
 
 " My leader key
 let mapleader = "\<Space>"
+
+" Autosave
+let g:auto_save = 1
 
 " Searching
 set hlsearch
