@@ -1,6 +1,6 @@
 call plug#begin()
 	Plug 'KeitaNakamura/neodark.vim'
-
+	Plug 'rakr/vim-one'
 	Plug 'tpope/vim-sensible'
 
 	Plug 'benekastah/neomake'
@@ -61,7 +61,10 @@ set cursorline
 
 syntax enable
 set termguicolors
-colorscheme neodark
+
+"colorscheme neodark
+colorscheme one
+set background=dark " for the dark version
 
 "Deoplete"
 let g:deoplete#enable_at_startup = 1
@@ -119,7 +122,7 @@ let g:nerdtree_tabs_autofind = 1
 
 
 " air-line
-let g:airline_theme='bubblegum'
+let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
