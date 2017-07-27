@@ -1,6 +1,6 @@
 call plug#begin()
-"Theme"
 	Plug 'KeitaNakamura/neodark.vim'
+
 	Plug 'tpope/vim-sensible'
 
 	Plug 'benekastah/neomake'
@@ -37,6 +37,7 @@ call plug#begin()
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'tpope/vim-sleuth'
+	Plug 'tpope/vim-surround'
 
 	Plug 'terryma/vim-expand-region'
 	Plug 'justinmk/vim-sneak'
@@ -53,19 +54,14 @@ set updatecount=50
 set updatetime=250
 set hidden
 set nu
+
 " highlight the current line
 set cursorline
-" Highlight active column
-"set cuc cul
-
 " Theme
 
 syntax enable
 set termguicolors
 colorscheme neodark
-
-" Auto Save
-let g:auto_save = 1
 
 "Deoplete"
 let g:deoplete#enable_at_startup = 1
@@ -123,8 +119,7 @@ let g:nerdtree_tabs_autofind = 1
 
 
 " air-line
-let g:airline_theme = "hybrid"
-"let g:airline_theme='bubblegum'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
