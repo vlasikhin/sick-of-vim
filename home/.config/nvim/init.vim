@@ -48,6 +48,7 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline'
 	Plug 'Yggdroot/indentLine'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -124,7 +125,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\.git$', '\.idea$', '\~$','\.DS_Store']
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_autofind = 1
-
+let g:NERDTreeWinPos = "right"
 
 " air-line
 let g:airline_theme='one'
@@ -158,7 +159,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 let g:gitgutter_realtime = 1
 
 "================= Experimental ====================="
