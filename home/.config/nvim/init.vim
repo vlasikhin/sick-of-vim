@@ -30,6 +30,12 @@ set mouse=""
 set omnifunc=syntaxcomplete#Complete
 
 call plug#begin()
+  Plug 'vim-scripts/vim-auto-save'
+  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'tpope/vim-rails'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'joshdick/onedark.vim'
   Plug 'sheerun/vim-polyglot'
   Plug 'slim-template/vim-slim'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -81,18 +87,16 @@ call plug#begin()
   Plug 'vim-ruby/vim-ruby'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-    "let g:airline_theme = 'luna'
-    "let g:airline_theme = 'lucius'
-    let g:airline_theme = 'lucius'
+    let g:airline_theme = 'papercolor'
     let g:bufferline_echo = 0
     let g:airline_powerline_fonts=0
     let g:airline_enable_branch=1
     let g:airline_enable_syntastic=1
     let g:airline_branch_prefix = '⎇ '
     let g:airline_paste_symbol = '∥'
-    let g:airline#extensions#tabline#enabled = 0
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#ale#enabled = 1
-
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
     let g:fzf_command_prefix = 'Fzf'
@@ -102,9 +106,11 @@ call plug#begin()
     nnoremap <Leader><C-h> :FzfBCommits<CR>
 
   Plug 'scrooloose/nerdtree'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'jistr/vim-nerdtree-tabs'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'jistr/vim-nerdtree-tabs'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 syntax on
@@ -121,8 +127,9 @@ set cursorline
 
 syntax enable
 set termguicolors
-colorscheme molokai
+colorscheme PaperColor
 set background=dark
+set laststatus=2
 
 augroup myfiletypes
   " Clear old autocmds in group
@@ -163,7 +170,7 @@ map <leader>w :NERDTreeFocusToggle<CR>
 map <leader>q :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\.git$', '\.idea$', '\~$','\.DS_Store']
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_autofind = 1
 let g:NERDTreeWinPos = "left"
 
