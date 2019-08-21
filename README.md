@@ -6,7 +6,7 @@
 
 3. Pull and link your fork with [`homesick`](https://github.com/technicalpickles/homesick):
 ```bash
-  homesick clone https://github.com/vlasikhin/sick-of-vim.git
+  homesick clone git://github.com/vlasikhin/sick-of-vim.git
   homesick link sick-of-vim
 ```
 
@@ -14,4 +14,3 @@
 and `:PlugUpdate` (updates/installs all the Plug-referenced plugins) commands. Plugins will be loaded on the next run. \
 It might be a good idea to run those commands once in a while to keep your tools up-to-date
 
-Based on [config](https://gitlab.com/kirushik/sick-of-vim)

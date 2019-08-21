@@ -101,6 +101,10 @@ call plug#begin()
     nnoremap <Leader><C-p> :FzfGitFiles<CR>
     nnoremap <Leader><C-h> :FzfBCommits<CR>
 
+  Plug 'scrooloose/nerdtree'
+	Plug 'scrooloose/nerdcommenter'
+	Plug 'jistr/vim-nerdtree-tabs'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 syntax on
