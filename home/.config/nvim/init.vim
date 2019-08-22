@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " Show trailing whitespace and spaces before a tab:
-:highlight ExtraWhitespace ctermbg=red guibg=green
+:highlight ExtraWhitespace ctermbg=green guibg=green
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 """""""""""""" Basics #basics
@@ -111,6 +111,7 @@ call plug#begin()
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 syntax on
@@ -164,6 +165,7 @@ nnoremap <Tab> :bNext<CR>
 map <leader>p :bp<CR> " \p previous buffer
 map <leader>n :bn<CR> " \n next buffer
 map <leader>d :bd<CR> " \d delete buffer
+:nmap <C-N><C-N> :set invnumber<CR>
 
 " NERDTree
 map <leader>w :NERDTreeFocusToggle<CR>
