@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " Show trailing whitespace and spaces before a tab:
-:highlight ExtraWhitespace ctermbg=green guibg=green
+:highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
 
 """""""""""""" Basics #basics
@@ -32,6 +32,7 @@ set omnifunc=syntaxcomplete#Complete
 call plug#begin()
   Plug 'vim-scripts/vim-auto-save'
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-rails'
   Plug 'tomtom/tcomment_vim'
   Plug 'jiangmiao/auto-pairs'
@@ -87,7 +88,7 @@ call plug#begin()
   Plug 'vim-ruby/vim-ruby'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme = 'papercolor'
+    let g:airline_theme = 'gruvbox'
     let g:bufferline_echo = 0
     let g:airline_powerline_fonts=0
     let g:airline_enable_branch=1
@@ -125,10 +126,10 @@ set nu
 set cursorline
 
 " Theme
-
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 set termguicolors
-colorscheme PaperColor
+colorscheme gruvbox
 set background=dark
 set laststatus=2
 
